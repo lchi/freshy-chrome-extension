@@ -1,0 +1,10 @@
+{
+  "name": "freshy",
+  "description": "Keeping your web content fresh.",
+  "version": "0.1",
+  "omnibox": { "keyword" : "freshy" },
+  "permissions": [
+    "tabs"
+  ],
+  "background_page": "freshy.html"
+}
