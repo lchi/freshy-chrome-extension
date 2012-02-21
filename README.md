@@ -1,18 +1,20 @@
-asdSearch
-Written by Lucas Chi
+freshy-chrome-extension
+=======================
 
-Installation (dev mode): 
-1.  Go to Tools -> Extensions in your Chrome settings menu.
-2.  Check 'Developer Mode' in the top right hand corner.
-3.  Click the 'Load unpacked extension...' button.
-4.  Select this directory (the one containing asdSearch.html,
-	manifest.json, and the monkey png!).
-5.  Done!  HOOORAY.
+The chrome extension for freshy.  More info to come. 
 
-Usage:
-asdSearch uses the omnibox (address bar) in Chrome.  Type 'asd' 
-then tab to do a search across multiple sites.  Current searches
-are limited to a Google Maps search, Yelp, Facebook and Google
-search excluding Yelp, Facebook and Google maps domains.
+You'll need to use https://github.com/lchi/freshy-server in conjunction with this extension.
 
-Changelog:
+Credit
+------
+Idea for this project was taken from Slushbox, a project by John J. Workman.  See the project at https://github.com/workmajj/slushbox
+
+License
+-------
+Copyright (c) 2012 Lucas Chi
+
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
