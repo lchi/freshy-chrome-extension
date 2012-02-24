@@ -5,9 +5,11 @@ The chrome extension for freshy.  More info to come.
 
 What does this do?
 ------------------
-Too lazy to press ctrl-r to reload your website?  Let this tool do it for you.  
+This tool is made to work with [freshy-server](https://github.com/lchi/freshy-server), and is a tool to help with web development.  
 
-After starting the server (which allows you to select directories to 'watch'), you can use this extension to load a webpage and have it reload every time a 'watched' directory has some change (creations, modifications, deletions).  No need to wear out ctrl and r keys anymore.
+TLDR; Point this to a web page w/ the server installed and it reloads the page everytime you change something.
+
+For more info please check the [freshy-server](https://github.com/lchi/freshy-server) project.
 
 Installation (for development/testing purposes)
 -----------------------------------------------
@@ -35,7 +37,7 @@ After installation, you can use this extension by typing 'freshy' in the omnibox
 
 Credit
 ------
-Idea for this project was taken from Slushbox, a project by John J. Workman.  See the project at https://github.com/workmajj/slushbox
+Idea for this project was taken from Slushbox, a project by John J. Workman.  See the project at [slushbox](https://github.com/workmajj/slushbox).
 
 License (MIT)
 -------------
