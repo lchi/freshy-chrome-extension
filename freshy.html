@@ -1,33 +1,6 @@
 <html>
-  <head>Freshy Debug</head>
-  <script>
-    var open_sockets = [];
-    chrome.omnibox.onInputEntered.addListener(function(addr) {
-      chrome.tabs.update(null,{
-        active: true,
-	url: addr
-      }, 
-      function(tab) {
-        open_sockets[tab.id] = ws;
-        ws.tab_id = tab.id;
-      });
-
-      var ws = new WebSocket('ws://localhost:4444');
-      ws.onmessage = refreshPage;
-
-    });
-
-    chrome.tabs.onRemoved.addListener(function(id, info) {
-      open_sockets[id].close();
-      delete open_sockets[id];
-    });
-
-
-    var refreshPage = function(event) {
-      chrome.tabs.reload(this.tab_id);
-    }
+  <script type="text/javascript" src="freshy.js">
   </script>
   <body>
-    <span id='open_sockets'> </span>
   </body>
 </html>
