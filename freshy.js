@@ -26,12 +26,7 @@ chrome.omnibox.onInputEntered.addListener(function(input) {
     ws.onmessage = function(event) {
         console.log(event.data);
 	try {
-            chrome.tabs.get(ws.tab_id, function(tab) {
-		chrome.tabs.update(ws.tab_id, {
-		    selected: tab.selected,
-		    url: tab.url
-		});
-            });
+	    chrome.tabs.reload(ws.tab_id);
         } catch (err) {
             console.log(err);
         }
