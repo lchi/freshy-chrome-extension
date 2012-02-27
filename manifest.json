@@ -1,6 +1,7 @@
 {
   "name": "freshy",
-  "description": "Keeping your web content fresh.",
+  "description": "Automatic webpage reloading on filesystem events.",
+  "icons": { "128": "arrow_refresh.png" },
   "version": "0.1",
   "omnibox": { "keyword" : "freshy" },
   "permissions": [

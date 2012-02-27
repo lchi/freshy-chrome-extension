@@ -13,9 +13,11 @@ For more info please check the [freshy-server](https://github.com/lchi/freshy-se
 
 Installation (for development/testing purposes)
 -----------------------------------------------
-**Use this only for development/testing.  Stable releases will be found in the App Store (when I get to it..).
+From the Chrome web store:
 
-First you need to clone this project (until I get this into the Chrome App store):
+https://chrome.google.com/webstore/detail/ljmjeebjaedanhojdahmpeajdakmkafg?hl=en-US&gl=US
+
+Or, if you want the very latest work, you need to clone this project:
 
 	$ git clone git@github.com:/lchi/freshy-chrome-extension
 
@@ -38,6 +40,8 @@ After installation, you can use this extension by typing 'freshy' in the omnibox
 Credit
 ------
 Idea for this project was taken from Slushbox, a project by John J. Workman.  See the project at [slushbox](https://github.com/workmajj/slushbox).
+
+Icon credit Pawel Kadysz, taken from http://freebiesbooth.com/hand-drawn-web-icons.  View his profile [here](http://graphicriver.net/user/pawelkadysz?ref=pawelkadysz&ref=pawelkadysz&clickthrough_id=45838430&redirect_back=true).
 
 License (MIT)
 -------------
