@@ -37,6 +37,12 @@ After installation, you can use this extension by typing 'freshy' in the omnibox
 1.  URL of the page you want to test/debug.
 2.  (Optional) Location of the freshy-server (defaults to ws://localhost:4444).  NOTE: DO NOT INCLUDE THE 'ws://' PREFIX - it is done already by the js.
 
+The connection is maintained until the tab is closed, which means you can navigate to any webpage in the same tab and still have it refresh.  
+
+Example usage (opening the content at localhost:80 and telling the tab to refresh on fs events):
+
+freshy <tab> localhost
+
 Credit
 ------
 Idea for this project was taken from Slushbox, a project by John J. Workman.  See the project at [slushbox](https://github.com/workmajj/slushbox).
