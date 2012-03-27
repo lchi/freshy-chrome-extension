@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+	<title>freshy options</title>
+</head>
+
+<body>
+
+<h1>freshy</h1>
+<p>
+Enter .gitignore-like glob patterns of files to ignore, separated by newlines
+</p>
+<textarea id="textignore" name="Ignore Patterns" rows=4 cols=40>
+</textarea>
+<h3 id="inputOK" hidden="true">
+	ignore settings look good!
+</h3>
+<h3 id="inputBad" hidden="true">
+	Ignore settings not valid!
+</h3>
+<script>
+var inputIsValid = function(text){
+	if (text.indexOf(' ') != -1){
+		return false;
+	}
+	return true;
+}
+var inputOK = document.getElementById('inputOK')
+var inputBad = document.getElementById('inputBad')
+var textIgnoreInput = document.getElementById('textignore')
+textIgnoreInput.addEventListener('input', function(){
+	localStorage.ignoreText = textIgnoreInput.value;
+	if (inputIsValid(textIgnoreInput.value)){
+		inputOK.hidden = false;
+		inputBad.hidden = true;
+	} else {
+		inputBad.hidden = false;
+		inputOK.hidden = true;
+	}
+});
+
+textIgnoreInput.value = localStorage.ignoreText;
+
+</script>
+</body>
+</html>
