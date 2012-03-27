@@ -9,7 +9,10 @@
 
 <h1>freshy</h1>
 <p>
-Enter .gitignore-like glob patterns of files for freshy to ignore changes to, separated by newlines
+Enter a newline-separated list of regular expressions in javascript
+RegExp(line) syntax.
+If a file modification event matches any of these patterns, it will
+not trigger a page refresh.
 </p>
 <textarea id="textignore" name="Ignore Patterns" rows=4 cols=40>
 </textarea>
@@ -20,14 +23,8 @@ Enter .gitignore-like glob patterns of files for freshy to ignore changes to, se
 	Ignore settings not valid!
 </h3>
 <script>
-var inputIsValid = function(text){
-	if (text.indexOf(' ') != -1){
-		return false;
-	}
-	return true;
-}
-var updateInputValidityIndicators = function(){
-	if (inputIsValid(textIgnoreInput.value)){
+var updateInputValidityIndicators = function(valid){
+	if (valid){
 		inputOK.hidden = false;
 		inputBad.hidden = true;
 	} else {
@@ -35,16 +32,39 @@ var updateInputValidityIndicators = function(){
 		inputOK.hidden = true;
 	}
 }
+var updateRegexesAndReturnValidity = function(){
+    regexes = [];
+    var valid = true
+    var text = textIgnoreInput.value
+    var strings = text.split('\n');
+    for (var i = 0; i < strings.length; i++){
+        try {
+                r = RegExp(strings[i]);
+            } catch (err) {
+                console.log(err);
+                valid = false;
+                break;
+            }
+        regexes.push(r)
+    }
+    if (valid){
+        localStorage.regexStrings = JSON.stringify(strings);
+    } else {
+        localStorage.regexStrings = JSON.stringify([]);
+    }
+    return valid;
+}
 var inputOK = document.getElementById('inputOK')
 var inputBad = document.getElementById('inputBad')
 var textIgnoreInput = document.getElementById('textignore')
+var regexes;
 textIgnoreInput.addEventListener('input', function(){
 	localStorage.ignoreText = textIgnoreInput.value;
-    updateInputValidityIndicators();
+    updateInputValidityIndicators(updateRegexesAndReturnValidity());
 });
 
 textIgnoreInput.value = localStorage.ignoreText;
-updateInputValidityIndicators();
+updateInputValidityIndicators(updateRegexesAndReturnValidity());
 
 </script>
 </body>
