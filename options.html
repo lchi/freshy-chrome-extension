@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+	<title>freshy options</title>
+</head>
+
+<body>
+
+<h1>freshy options</h1>
+<p>
+Enter a newline-separated list of regular expressions in javascript
+RegExp(line) syntax.
+If the full path of a file matches any of these patterns, it will
+not trigger a page refresh.
+</p>
+<textarea id="textignore" name="Ignore Patterns" rows=4 cols=40>
+</textarea>
+<h3 id="inputOK" hidden="true">
+    <img src="bullet_accept.png"><br>
+	ignore settings appear valid.
+</h3>
+<h3 id="inputBad" hidden="true">
+    <img src="bullet_deny.png"><br>
+	Ignore settings not valid!
+</h3>
+<script>
+var updateInputValidityIndicators = function(valid){
+	if (valid){
+		inputOK.hidden = false;
+		inputBad.hidden = true;
+	} else {
+		inputBad.hidden = false;
+		inputOK.hidden = true;
+	}
+}
+var updateRegexesAndReturnValidity = function(){
+    regexes = [];
+    var valid = true
+    var text = textIgnoreInput.value
+    var strings = text.split('\n');
+    for (var i = 0; i < strings.length; i++){
+        try {
+                r = RegExp(strings[i]);
+            } catch (err) {
+                console.log(err);
+                valid = false;
+                break;
+            }
+        regexes.push(r)
+    }
+    if (valid){
+        localStorage.regexStrings = JSON.stringify(strings);
+    } else {
+        localStorage.regexStrings = JSON.stringify([]);
+    }
+    return valid;
+}
+var inputOK = document.getElementById('inputOK')
+var inputBad = document.getElementById('inputBad')
+var textIgnoreInput = document.getElementById('textignore')
+var regexes;
+textIgnoreInput.addEventListener('input', function(){
+	localStorage.ignoreText = textIgnoreInput.value;
+    updateInputValidityIndicators(updateRegexesAndReturnValidity());
+});
+
+textIgnoreInput.value = localStorage.ignoreText;
+updateInputValidityIndicators(updateRegexesAndReturnValidity());
+
+</script>
+</body>
+</html>

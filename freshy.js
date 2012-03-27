@@ -28,8 +28,22 @@ chrome.omnibox.onInputEntered.addListener(function(input) {
 
     ws.onmessage = function(event) {
         console.log(event.data);
-	try {
-	    chrome.tabs.reload(ws.tab_id);
+        data = JSON.parse(event.data);
+        var modified_file = data.obj;
+        var regexStrings = JSON.parse(localStorage.regexStrings);
+        console.log('modified file: '+modified_file);
+        for (var i = 0; i < regexStrings.length; i++){
+            console.log('now checking '+r);
+            var r = RegExp(regexStrings[i]);
+            if (modified_file.match(r) != null){
+                console.log('modified file matches regexp:');
+                console.log(modified_file);
+                console.log(r);
+                return;
+            }
+        }
+        try {
+            chrome.tabs.reload(ws.tab_id);
         } catch (err) {
             console.log(err);
         }
