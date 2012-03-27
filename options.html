@@ -9,12 +9,12 @@
 
 <h1>freshy</h1>
 <p>
-Enter .gitignore-like glob patterns of files to ignore, separated by newlines
+Enter .gitignore-like glob patterns of files for freshy to ignore changes to, separated by newlines
 </p>
 <textarea id="textignore" name="Ignore Patterns" rows=4 cols=40>
 </textarea>
 <h3 id="inputOK" hidden="true">
-	ignore settings look good!
+	ignore settings appear valid.
 </h3>
 <h3 id="inputBad" hidden="true">
 	Ignore settings not valid!
@@ -26,11 +26,7 @@ var inputIsValid = function(text){
 	}
 	return true;
 }
-var inputOK = document.getElementById('inputOK')
-var inputBad = document.getElementById('inputBad')
-var textIgnoreInput = document.getElementById('textignore')
-textIgnoreInput.addEventListener('input', function(){
-	localStorage.ignoreText = textIgnoreInput.value;
+var updateInputValidityIndicators = function(){
 	if (inputIsValid(textIgnoreInput.value)){
 		inputOK.hidden = false;
 		inputBad.hidden = true;
@@ -38,9 +34,17 @@ textIgnoreInput.addEventListener('input', function(){
 		inputBad.hidden = false;
 		inputOK.hidden = true;
 	}
+}
+var inputOK = document.getElementById('inputOK')
+var inputBad = document.getElementById('inputBad')
+var textIgnoreInput = document.getElementById('textignore')
+textIgnoreInput.addEventListener('input', function(){
+	localStorage.ignoreText = textIgnoreInput.value;
+    updateInputValidityIndicators();
 });
 
 textIgnoreInput.value = localStorage.ignoreText;
+updateInputValidityIndicators();
 
 </script>
 </body>
