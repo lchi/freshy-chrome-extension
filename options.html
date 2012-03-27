@@ -7,19 +7,21 @@
 
 <body>
 
-<h1>freshy</h1>
+<h1>freshy options</h1>
 <p>
 Enter a newline-separated list of regular expressions in javascript
 RegExp(line) syntax.
-If a file modification event matches any of these patterns, it will
+If the full path of a file matches any of these patterns, it will
 not trigger a page refresh.
 </p>
 <textarea id="textignore" name="Ignore Patterns" rows=4 cols=40>
 </textarea>
 <h3 id="inputOK" hidden="true">
+    <img src="bullet_accept.png"><br>
 	ignore settings appear valid.
 </h3>
 <h3 id="inputBad" hidden="true">
+    <img src="bullet_deny.png"><br>
 	Ignore settings not valid!
 </h3>
 <script>
