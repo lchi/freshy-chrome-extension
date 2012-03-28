@@ -1,0 +1,3 @@
+[submodule "minimatch"]
+	path = minimatch
+	url = https://github.com/isaacs/minimatch.git
