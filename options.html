@@ -64,7 +64,10 @@ textIgnoreInput.addEventListener('input', function(){
 	localStorage.ignoreText = textIgnoreInput.value;
     updateInputValidityIndicators(updateRegexesAndReturnValidity());
 });
-
+if (localStorage.ignoreText === undefined){
+    localStorage.ignoreText === '';
+    localStorage.regexStrings = JSON.stringify([]);
+}
 textIgnoreInput.value = localStorage.ignoreText;
 updateInputValidityIndicators(updateRegexesAndReturnValidity());
 
