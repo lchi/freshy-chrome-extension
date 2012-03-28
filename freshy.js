@@ -30,15 +30,15 @@ chrome.omnibox.onInputEntered.addListener(function(input) {
         console.log(event.data);
         data = JSON.parse(event.data);
         var modified_file = data.obj;
-        var regexStrings = JSON.parse(localStorage.regexStrings);
+        var globStrings = JSON.parse(localStorage.globStrings);
         console.log('modified file: '+modified_file);
-        for (var i = 0; i < regexStrings.length; i++){
-            console.log('now checking '+r);
-            var r = RegExp(regexStrings[i]);
-            if (modified_file.match(r) != null){
+        for (var i = 0; i < globStrings.length; i++){
+            if (globStrings[i].length > 1 && globStrings[i][0] == '#'){continue;}
+            var isMatch = minimatch(modified_file, globStrings[i], {matchBase:true});
+            if (isMatch){
                 console.log('modified file matches regexp:');
                 console.log(modified_file);
-                console.log(r);
+                console.log(globStrings[i])
                 return;
             }
         }

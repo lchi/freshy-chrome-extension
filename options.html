@@ -3,15 +3,16 @@
 <html>
 <head>
 	<title>freshy options</title>
+    <script src="minimatch/minimatch.js"> </script>
 </head>
 
 <body>
 
 <h1>freshy options</h1>
 <p>
-Enter a newline-separated list of regular expressions in javascript
-RegExp(line) syntax.
-If the full path of a file matches any of these patterns, it will
+Enter a newline-separated list of glob expressions,
+just like a .gitignore file
+If a file matches any of these patterns, it will
 not trigger a page refresh.
 </p>
 <textarea id="textignore" name="Ignore Patterns" rows=4 cols=40>
@@ -40,19 +41,21 @@ var updateRegexesAndReturnValidity = function(){
     var text = textIgnoreInput.value
     var strings = text.split('\n');
     for (var i = 0; i < strings.length; i++){
-        try {
-                r = RegExp(strings[i]);
-            } catch (err) {
-                console.log(err);
+        if (strings[i].length > 1 && strings[i][0] == '#'){continue;}
+        var mm = new minimatch.Minimatch(strings[i], {matchBase:true});
+            var r = mm.makeRe()
+            console.log(r)
+            if (r === false){
+                console.log('invalid glob pattern');
                 valid = false;
                 break;
             }
         regexes.push(r)
     }
     if (valid){
-        localStorage.regexStrings = JSON.stringify(strings);
+        localStorage.globStrings = JSON.stringify(strings);
     } else {
-        localStorage.regexStrings = JSON.stringify([]);
+        localStorage.globStrings = JSON.stringify([]);
     }
     return valid;
 }
@@ -66,7 +69,7 @@ textIgnoreInput.addEventListener('input', function(){
 });
 if (localStorage.ignoreText === undefined){
     localStorage.ignoreText === '';
-    localStorage.regexStrings = JSON.stringify([]);
+    localStorage.globStrings = JSON.stringify([]);
 }
 textIgnoreInput.value = localStorage.ignoreText;
 updateInputValidityIndicators(updateRegexesAndReturnValidity());
