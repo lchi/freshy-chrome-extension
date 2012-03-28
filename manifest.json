@@ -7,5 +7,6 @@
   "permissions": [
     "tabs"
   ],
-  "background_page": "freshy.html"
+  "background_page": "freshy.html",
+  "options_page": "options.html"
 }
