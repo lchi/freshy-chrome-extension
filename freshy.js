@@ -36,7 +36,7 @@ chrome.omnibox.onInputEntered.addListener(function(input) {
             if (globStrings[i].length > 1 && globStrings[i][0] == '#'){continue;}
             var isMatch = minimatch(modified_file, globStrings[i], {matchBase:true});
             if (isMatch){
-                console.log('modified file matches regexp:');
+                console.log('modified file matches glob expression:');
                 console.log(modified_file);
                 console.log(globStrings[i])
                 return;
