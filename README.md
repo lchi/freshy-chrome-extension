@@ -19,7 +19,9 @@ https://chrome.google.com/webstore/detail/ljmjeebjaedanhojdahmpeajdakmkafg?hl=en
 
 Or, if you want the very latest work, you need to clone this project:
 
-	$ git clone git@github.com:/lchi/freshy-chrome-extension
+	$ git clone --recursive git@github.com:/lchi/freshy-chrome-extension
+
+The `--recursive` flag is needed for the minimatch submodule.
 
 Afterwards, you need to install it in Chrome by navigating your browser to: chrome://settings/extensions and doing the following:
 
