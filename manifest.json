@@ -2,7 +2,7 @@
   "name": "freshy",
   "description": "Automatic webpage reloading on filesystem events.",
   "icons": { "128": "arrow_refresh.png" },
-  "version": "0.3",
+  "version": "0.3.7",
   "omnibox": { "keyword" : "freshy" },
   "permissions": [
     "tabs"

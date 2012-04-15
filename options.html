@@ -16,8 +16,6 @@ If a file matches any of these patterns, it will
 not trigger a page refresh.
 </p>
 <textarea id="textignore" name="Ignore Patterns" rows=4 cols=40>
-*.swp
-*~
 </textarea>
 <h3 id="inputOK" hidden="true">
     <img src="bullet_accept.png"><br>
@@ -70,8 +68,7 @@ textIgnoreInput.addEventListener('input', function(){
     updateInputValidityIndicators(updateRegexesAndReturnValidity());
 });
 if (localStorage.ignoreText === undefined){
-    console.log('localstorage val is undefined');
-    localStorage.ignoreText = '*.swp\n*~';
+    localStorage.ignoreText === '';
     localStorage.globStrings = JSON.stringify([]);
 }
 textIgnoreInput.value = localStorage.ignoreText;

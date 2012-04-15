@@ -1,5 +1,10 @@
 var open_sockets = [];
 
+if (localStorage.ignoreText === undefined || localStorage.globStrings === undefined){
+    localStorage.ignoreText === '';
+    localStorage.globStrings = JSON.stringify([]);
+}
+
 chrome.omnibox.onInputEntered.addListener(function(input) {
     var splitInput = input.split(" ");
     var wsURI = 'ws://localhost:4444';
@@ -38,11 +43,12 @@ chrome.omnibox.onInputEntered.addListener(function(input) {
             if (isMatch){
                 console.log('modified file matches glob expression:');
                 console.log(modified_file);
-                console.log(globStrings[i])
+                console.log(globStrings[i]);
                 return;
             }
         }
         try {
+            console.log('reloading tab');
             chrome.tabs.reload(ws.tab_id);
         } catch (err) {
             console.log(err);
