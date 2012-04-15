@@ -37,11 +37,17 @@ After installation, you can use this extension by typing 'freshy' in the omnibox
 1.  URL of the page you want to test/debug.
 2.  (Optional) Location of the freshy-server (defaults to ws://localhost:4444).  NOTE: DO NOT INCLUDE THE 'ws://' PREFIX - it is done already by the js.
 
-The connection is maintained until the tab is closed, which means you can navigate to any webpage in the same tab and still have it refresh.  
+The connection is maintained until the tab is closed, which means you can navigate to any webpage in the same tab and still have it refresh.
 
 Example usage (opening the content at localhost:80 and telling the tab to refresh on fs events):
 
 freshy <tab> localhost
+
+Thanks to [Tom Ballinger](https://github.com/thomasballinger), you can now specify ignore patterns for filesystem changes.  All filesystem change events that are registered on a file with a filename matching any ignore pattern will not cause a page refresh.  This is useful when you don't want your page to refresh because a change in a vim swap file or other temporary file that gets updated very frequently.  The patterns follow unix style glob syntax conventions, and glob support was added by using incorporating the [minimatch](https://github.com/isaacs/minimatch) project.  By default there are no ignore patterns set, but patterns like `*.swp` and `*.git` might be useful.  You set ignore patterns in the extension's options page, which you can reach by going to Wrench Menu -> Preferences -> Extensions -> Options (under Freshy).  It'll even tell you if the pattern is correct or not =D.
+
+Contributing
+------------
+Contributions to this software are greatly appreciated.  If you have an interest in contributing to either this project or the server side project, shoot me an email at chi dot lucas at gmail dot com.
 
 Credit
 ------
